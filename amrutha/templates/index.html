@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Recorder Interface</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Video Recorder Interface</h1>
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording">Stop Recording</button>
+    <button id="askQuestion">Ask Question</button>
+
+    <script>
+        $(document).ready(function() {
+            $('#startRecording').click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/start_recording',
+                    success: function(response) {
+                        alert(response.message);
+                    }
+                });
+            });
+
+            $('#stopRecording').click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/stop_recording',
+                    success: function(response) {
+                        alert(response.message);
+                    }
+                });
+            });
+
+            $('#askQuestion').click(function() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/ask_question',
+                    success: function(response) {
+                        alert(response.message);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
